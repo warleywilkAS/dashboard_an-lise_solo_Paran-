@@ -1,0 +1,1 @@
+# dashboard_an-lise_solo_Paran-
