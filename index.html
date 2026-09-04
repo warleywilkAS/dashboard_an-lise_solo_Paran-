@@ -131,7 +131,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     <div class="head-divider"></div>
     <div class="head-title">
       <h1>Análise de Solo <span class="head-sep">·</span> Safra Soja</h1>
-      <p id="headerSubtitle">amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/há)</p>
+      <p id="headerSubtitle">amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/ha)</p>
     </div>
   </header>
   <div class="brand-bar"></div>
@@ -177,7 +177,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     </div>
     <div class="panel">
       <h2>Produtividade média por regional</h2>
-      <p class="panel-note">Média de sc/há entre as amostras com produtividade registrada, por regional.</p>
+      <p class="panel-note">Média de sc/ha entre as amostras com produtividade registrada, por regional.</p>
       <div class="chart-box" style="height:230px" id="chartRegionalYield"></div>
     </div>
   </section>
@@ -189,7 +189,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     </div>
     <div class="panel">
       <h2>Produtividade por Tipo de solo</h2>
-      <p class="panel-note">Média de sc/há entre as amostras com produtividade registrada, por textura.</p>
+      <p class="panel-note">Média de sc/ha entre as amostras com produtividade registrada, por textura.</p>
       <div class="chart-box" style="height:210px" id="chartTexturaYield"></div>
     </div>
   </section>
@@ -202,7 +202,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     </div>
     <div class="panel">
       <h2>Distribuição da produtividade</h2>
-      <p class="panel-note">Número de amostras por faixa de produtividade (sc/há).</p>
+      <p class="panel-note">Número de amostras por faixa de produtividade (sc/ha).</p>
       <div class="chart-box" style="height:280px" id="chartHist"></div>
     </div>
   </section>
@@ -263,7 +263,7 @@ td.warn { color:#B23A2E; font-weight:600; }
             <th data-sort="vPct">V%<span class="arrow"></span></th>
             <th class="th-left" data-sort="classP">P (classe)<span class="arrow"></span></th>
             <th class="th-left" data-sort="classK">K (classe)<span class="arrow"></span></th>
-            <th data-sort="produtividade">Prod. (sc/há)<span class="arrow"></span></th>
+            <th data-sort="produtividade">Prod. (sc/ha)<span class="arrow"></span></th>
           </tr>
         </thead>
         <tbody id="mainTableBody"></tbody>
@@ -539,8 +539,8 @@ function renderKPIs(filtered, withYield){
   const alertas = filtered.filter(isAlert).length;
   const items = [
     [n, 'Amostras', false],
-    [prod!=null?prod:'–', 'Produtividade média (sc/há)', false],
-    [prodMin!=null? prodMin+' – '+prodMax : '–', 'Amplitude produtividade (sc/há)', false],
+    [prod!=null?prod:'–', 'Produtividade média (sc/ha)', false],
+    [prodMin!=null? prodMin+' – '+prodMax : '–', 'Amplitude produtividade (sc/ha)', false],
     [ph!=null?ph:'–', 'pH médio', false],
     [v!=null?v+'%':'–', 'Saturação por bases (V%)', false],
     [ctc!=null?ctc:'–', 'CTC média (cmol/dm³)', false],
@@ -571,10 +571,10 @@ function renderRegionalYield(withYield){
   plot('chartRegionalYield', [{
     type:'bar', orientation:'h', x: byReg.map(x=>round1(x.avg)), y: byReg.map(x=>x.r),
     marker:{color: byReg.map(x=>regionalColor(x.r))},
-    hovertemplate:'%{y}: %{x} sc/há (média)<extra></extra>'
+    hovertemplate:'%{y}: %{x} sc/ha (média)<extra></extra>'
   }], {
     margin:{l:130,r:20,t:10,b:35},
-    xaxis: gridAxis({title:{text:'sc/há', font:PLOTLY_FONT}}), yaxis: gridAxis({autorange:'reversed'})
+    xaxis: gridAxis({title:{text:'sc/ha', font:PLOTLY_FONT}}), yaxis: gridAxis({autorange:'reversed'})
   });
 }
 
@@ -597,10 +597,10 @@ function renderTexturaYield(withYield){
   plot('chartTexturaYield', [{
     type:'bar', orientation:'h', x: byTipo.map(x=>round1(x.avg)), y: byTipo.map(x=>x.t),
     marker:{color:'#A15C38'},
-    hovertemplate:'%{y}: %{x} sc/há (média)<extra></extra>'
+    hovertemplate:'%{y}: %{x} sc/ha (média)<extra></extra>'
   }], {
     margin:{l:120,r:20,t:10,b:35},
-    xaxis: gridAxis({title:{text:'sc/há', font:PLOTLY_FONT}}), yaxis: gridAxis({autorange:'reversed', categoryorder:'array', categoryarray:[...tipos].reverse()})
+    xaxis: gridAxis({title:{text:'sc/ha', font:PLOTLY_FONT}}), yaxis: gridAxis({autorange:'reversed', categoryorder:'array', categoryarray:[...tipos].reverse()})
   });
 }
 
@@ -646,7 +646,7 @@ function renderExplorer(withYield){
     type:'scatter', mode:'markers', x: withYield.map(d=>d[key]), y: withYield.map(d=>d.produtividade),
     marker:{ color: withYield.map(d=>regionalColor(d.regional)), size:9, opacity:0.85, line:{width:0.5,color:'#2B2417'} },
     text: withYield.map(d=>`${d.proprietario}<br>${d.municipio} · ${d.regional}`),
-    hovertemplate: `%{text}<br>${NUM_LABELS[key]}: %{x}<br>Produtividade: %{y} sc/há<extra></extra>`
+    hovertemplate: `%{text}<br>${NUM_LABELS[key]}: %{x}<br>Produtividade: %{y} sc/ha<extra></extra>`
   }];
   const shapes = [];
   const ref = REFERENCE_LINES[key];
@@ -658,7 +658,7 @@ function renderExplorer(withYield){
     shapes,
     annotations: ref? [{ x:ref.v, y:1, yref:'paper', yanchor:'bottom', text:ref.label, showarrow:false, font:{color:'#4B6A39', size:10.5} }] : [],
     xaxis: gridAxis({title:{text:NUM_LABELS[key], font:PLOTLY_FONT}}),
-    yaxis: gridAxis({title:{text:'Produtividade (sc/há)', font:PLOTLY_FONT}})
+    yaxis: gridAxis({title:{text:'Produtividade (sc/ha)', font:PLOTLY_FONT}})
   }), PLOTLY_CONFIG);
 }
 
@@ -670,10 +670,10 @@ function renderHistogram(withYield){
   const counts = edges.slice(0,-1).map((e,i)=>vals.filter(v=>v>=e && v<edges[i+1]).length);
   plot('chartHist', [{
     type:'bar', x: labs, y: counts, marker:{color:'#4B6A39'},
-    hovertemplate:'%{x} sc/há: %{y} amostras<extra></extra>'
+    hovertemplate:'%{x} sc/ha: %{y} amostras<extra></extra>'
   }], {
     margin:{l:45,r:20,t:10,b:40},
-    xaxis: gridAxis({title:{text:'Produtividade (sc/há)', font:PLOTLY_FONT}}),
+    xaxis: gridAxis({title:{text:'Produtividade (sc/ha)', font:PLOTLY_FONT}}),
     yaxis: gridAxis({title:{text:'nº de amostras', font:PLOTLY_FONT}})
   });
 }
@@ -760,7 +760,7 @@ function renderTable(filtered){
 
 /* ===== inicialização ===== */
 function init(){
-  document.getElementById('headerSubtitle').textContent = DATA.length + ' amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/há)';
+  document.getElementById('headerSubtitle').textContent = DATA.length + ' amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/ha)';
   document.getElementById('searchInput').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderAll(); });
   document.getElementById('alertToggle').addEventListener('change', (e)=>{ alertOnly = e.target.checked; renderAll(); });
   const ph0 = document.getElementById('phMin'), ph1 = document.getElementById('phMax');
