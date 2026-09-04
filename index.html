@@ -131,7 +131,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     <div class="head-divider"></div>
     <div class="head-title">
       <h1>Análise de Solo <span class="head-sep">·</span> Safra Soja</h1>
-      <p id="headerSubtitle">amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/ha)</p>
+      <p id="headerSubtitle">amostras laboratoriais coletadas em propriedades do Paraná</p>
     </div>
   </header>
   <div class="brand-bar"></div>
@@ -212,7 +212,7 @@ td.warn { color:#B23A2E; font-weight:600; }
     <span class="tag">variável livre</span>
   </div>
   <p class="section-intro">
-    Escolha qualquer parâmetro de solo para ver sua relação com a produtividade. O coeficiente de correlação é recalculado ao vivo, com o mesmo motor estatístico usado na seção de Análise de Correlação abaixo.
+    Escolha qualquer parâmetro de solo para ver sua relação com a produtividade.
   </p>
   <div class="panel" style="margin-bottom:18px">
     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
@@ -760,7 +760,7 @@ function renderTable(filtered){
 
 /* ===== inicialização ===== */
 function init(){
-  document.getElementById('headerSubtitle').textContent = DATA.length + ' amostras laboratoriais coletadas em propriedades do Paraná, cruzadas com produtividade de soja (sc/ha)';
+  document.getElementById('headerSubtitle').textContent = DATA.length + ' amostras laboratoriais coletadas em propriedades do Paraná';
   document.getElementById('searchInput').addEventListener('input', (e)=>{ searchTerm = e.target.value; renderAll(); });
   document.getElementById('alertToggle').addEventListener('change', (e)=>{ alertOnly = e.target.checked; renderAll(); });
   const ph0 = document.getElementById('phMin'), ph1 = document.getElementById('phMax');
