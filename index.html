@@ -194,10 +194,17 @@ td.warn { color:#B23A2E; font-weight:600; }
     </div>
   </section>
 
-  <section class="panel" style="margin-bottom:18px">
-    <h2>Classificação de fertilidade por nutriente</h2>
-    <p class="panel-note">Contagem de amostras em cada faixa, por parâmetro analisado.</p>
-    <div class="chart-box" style="height:280px" id="chartClass"></div>
+  <section class="grid-secondary">
+    <div class="panel">
+      <h2>Classificação de fertilidade por nutriente</h2>
+      <p class="panel-note">Contagem de amostras em cada faixa, por parâmetro analisado.</p>
+      <div class="chart-box" style="height:280px" id="chartClass"></div>
+    </div>
+    <div class="panel">
+      <h2>Distribuição da produtividade</h2>
+      <p class="panel-note">Número de amostras por faixa de produtividade (sc/há).</p>
+      <div class="chart-box" style="height:280px" id="chartHist"></div>
+    </div>
   </section>
 
   <div class="section-title">
@@ -207,19 +214,13 @@ td.warn { color:#B23A2E; font-weight:600; }
   <p class="section-intro">
     Escolha qualquer parâmetro de solo para ver sua relação com a produtividade. O coeficiente de correlação é recalculado ao vivo, com o mesmo motor estatístico usado na seção de Análise de Correlação abaixo.
   </p>
-  <div class="panel">
+  <div class="panel" style="margin-bottom:18px">
     <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
       <select class="text-input" id="explorerSelect" style="width:280px"></select>
       <span class="panel-note" id="explorerStat" style="margin:0"></span>
     </div>
     <div class="chart-box" style="height:340px" id="chartExplorer"></div>
   </div>
-
-  <section class="panel" style="margin-bottom:18px">
-    <h2>Distribuição da produtividade</h2>
-    <p class="panel-note">Número de amostras por faixa de produtividade (sc/há).</p>
-    <div class="chart-box" style="height:250px" id="chartHist"></div>
-  </section>
 
   <div class="section-title">
     <h2>Análise de Correlação</h2>
